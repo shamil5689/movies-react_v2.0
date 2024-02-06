@@ -1,0 +1,232 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  width: 9px; /* ширина всей полосы прокрутки */
+}
+
+*::-webkit-scrollbar-track {
+  background: black; /* цвет зоны отслеживания */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: black; /* цвет бегунка */
+  border-radius: 20px; /* округлось бегунка */
+  border: 4px solid grey; /* отступ вокруг бегунка */
+}
+
+body {
+  margin: 0;
+  font-family: "EB Garamond", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img{ 
+  max-width: 100%;
+}
+
+html {
+  position: relative;
+}
+
+ul {
+  list-style: none;
+}
+li:not(:last-child) {
+  margin-right: 10px;
+}
+
+.overlay:before,
+.overlay:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  right: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay::before {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 27%,
+    rgba(0, 0, 0, 1) 45%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+@media (min-width: 1610px) {
+  .overlay::before {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) 21%,
+      rgba(0, 0, 0, 1) 42%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    flex-direction: column;
+  }
+  .overlay > div > img {
+    /* object-fit: cover; */
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .overlay::before,
+  .overlay::after {
+    content: unset;
+  }
+}
+
+.overlay::after {
+  left: 0;
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 76%,
+    rgba(0, 0, 0, 0.804359243697479) 94%
+  );
+}
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  max-width: 1900px;
+  height: 100%;
+  /* margin: 115px auto;  */
+  margin: 40px auto 0 auto;
+}
+@media (max-width: 1024px) {
+  .wrapper {
+    width: calc(100vw - 10px);
+  }
+}
+
+.heading {
+  font-size: clamp(0.938rem, 0.775rem + 0.81vw, 1.75rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 42px;
+  color: white;
+}
+
+.rating {
+  @apply absolute top-[10px] left-[10px] flex items-center justify-center  text-white text-lg  w-[2.4rem] py-[2px] px-[30px];
+}
+
+.swiper > .swiper-wrapper > .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+ .swiper-button-prev, .swiper-button-next{
+  color: white !important
+}
+
+.to-choase:hover {
+  fill: #fff;
+  stroke: black;
+  /* цвет обводки */
+  stroke-width: 1px;
+  /* толщина обводки */
+  stroke-opacity: 0.8;
+  /* прозрачность обводки */
+}
+
+.gold {
+  background-color: #ad9760;
+}
+.green {
+  background-color: green;
+}
+.orange {
+  background-color: orange;
+}
+.red {
+  background-color: red;
+}
+
+.gold::before,
+.gold::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  bottom: 0;
+  width: 0.8rem;
+  height: 1.7rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+
+.gold::before {
+  left: 2px;
+  background-image: url("../src/assets/img/branchLeft.png");
+}
+
+.gold::after {
+  right: 2px;
+  background-image: url("../src/assets/img/branchRight.png");
+}
+
+.fadeInRight {
+  animation-name: fadeInRight;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeInRight-enter {
+  opacity: 0;
+  transform: translateX(10%);
+}
+
+.fadeInRight-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.fadeInRight-exit {
+  opacity: 1;
+  /* transform: translateX(0); */
+}
+
+.fadeInRight-exit-active {
+  opacity: 0;
+  /* transform: translateX(100%); */
+  transition: opacity 300ms, transform 300ms;
+}
+
+.search-results {
+  position: absolute;
+  top: 100px; /* Измените это значение, чтобы задать желаемое положение секции */
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Измените это значение, чтобы убедиться, что секция отображается поверх другого контента */
+  background-color: white; /* Измените это значение, чтобы задать цвет фона секции */
+  /* Добавьте любые другие стили, которые вам нужны для секции с результатами поиска */
+}
+
+.header{
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,0.19931722689075626) 13%, rgba(0,0,0,0.7903536414565826) 88%);
+}
