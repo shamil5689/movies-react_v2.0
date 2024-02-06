@@ -11,8 +11,3 @@ Build the app for production: npm run build
 Deploy the built app to a web hosting service (e.g., GitHub Pages, Netlify, Heroku)
 Links
 Live demo: https://movies-react-c7475.web.app/
-
-Screenshots
-![Uploading Снимок экрана 2024-02-06 в 20.28.28.png…]()
-![Uploading Снимок экрана 2024-02-06 в 20.28.10.png…]()
-![Uploading Снимок экрана 2024-02-06 в 20.28.21.png…]()
